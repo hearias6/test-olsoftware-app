@@ -29,14 +29,39 @@ export class EditUserComponent implements OnInit {
   createFormUser(){
     console.log('createFormUser');
     this.userForm = this.formBuilder.group({
-      id : [''],
-      username : ['', Validators.required],
+      id : ['', Validators.required],
+      nombres : ['', Validators.required],
+      apellidos : ['', Validators.required],
+      identificacion : ['', Validators.required],
+      rol : ['', Validators.required],
+      estado : ['', Validators.required],
+      telefono : ['', Validators.required],
+      correo : ['', Validators.required],
       password : ['', Validators.required]
     })
   }
 
-  get username(){
-    return this.userForm.get('username');
+  get nombres(){
+    return this.userForm.get('nombres');
+  }
+
+  get apellidos(){
+    return this.userForm.get('apellidos');
+  }
+  get identificacion(){
+    return this.userForm.get('identificacion');
+  }
+  get rol(){
+    return this.userForm.get('rol');
+  }
+  get estado(){
+    return this.userForm.get('estado');
+  }
+  get telefono(){
+    return this.userForm.get('telefono');
+  }
+  get correo(){
+    return this.userForm.get('correo');
   }
 
   get password(){
@@ -48,14 +73,24 @@ export class EditUserComponent implements OnInit {
   }
 
   update(){
-    this.userService.editUser(this.userForm.get('id').value, this.userForm.value);
+    this.userService.editUser(this.id.value, this.userForm.value);
     this.bsModalRef.hide();
   }
 
   setUserForm(){
     this.id.setValue(this.user.id);
-    this.username.setValue(this.user.username);
     this.password.setValue(this.user.password);
+    this.nombres.setValue(this.user.nombres);
+    this.apellidos.setValue(this.user.apellidos);
+    this.identificacion.setValue(this.user.identificacion);
+    this.correo.setValue(this.user.correo);
+    this.telefono.setValue(this.user.telefono);
+    this.estado.setValue(this.user.estado);
+    this.rol.setValue(this.user.rol);
   }
+
+  cancel(){
+    this.bsModalRef.hide();
+  }  
 
 }

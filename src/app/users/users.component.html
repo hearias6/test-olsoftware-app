@@ -1,43 +1,103 @@
-<section class="" style="padding:2%">
+<section class="p-4">
 
     <div class="row">
-        <div class="col col-md-10">
-            <h1>Usuarios</h1>
+        <div class="col col-sm-12 col-md-8 bg-white p-5 m-3">
+
+            <div class="row">
+                <div class="col col-md-10">
+                    <h3 class="text-primary">
+                        <i-bs name="people-fill" class="text-primary" width="2rem" height="2rem">
+                        </i-bs>
+                        Usuarios Existentes
+                    </h3>
+                </div>
+                <div class="col col-md-2 text-right">
+                    <button class="btn btn-primary" (click)="openModalAddUser()">
+                        Crear
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm mt-3">
+                        <thead>
+                            <tr>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Idenficación (c.c)</th>
+                                <th>Rol Asociado</th>
+                                <th>Estado</th>
+                                <th>Telefono</th>
+                                <th>Correo Electronico</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users">
+                                <td>
+                                    {{user.nombres}}
+                                </td>
+                                <td>
+                                    {{user.apellidos}}
+                                </td>
+                                <td>
+                                    {{user.identificacion}}
+                                </td>
+                                <td>
+                                    {{user.rol}}
+                                </td>
+                                <td>
+                                    {{user.estado}}
+                                </td>
+                                <td>
+                                    {{user.telefono}}
+                                </td>
+                                <td>
+                                    {{user.correo}}
+                                </td>
+                                <td>
+                                    <i-bs (click)="selectedUser(user)" name="pencil" class="text-primary m-1" width="1.5rem"
+                                        height="1.5rem">
+                                    </i-bs>
+                                    <i-bs (click)="openModalDeleteUser(template, user.id)" name="trash-fill"
+                                        class="text-danger m-1" width="1.5rem" height="1.5rem">
+                                    </i-bs>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="col col-md-2 text-right">
-            <button class="btn btn-success" (click)="openModalAddUser()">
-                Crear
-            </button>
+
+        <div class="col col-sm-12 col-md-3 bg-white p-5 m-3">
+            <h3 class="text-primary">
+                <i-bs name="person-plus-fill" class="text-primary" width="2rem" height="2rem">
+                </i-bs>
+                Filtrar Búsqueda
+            </h3>
+
+            <div class="form-group">
+                <label for="">
+                    Nombres
+                </label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">
+                    Apellidos
+                </label>
+                <input type="text" class="form-control">
+            </div>
+
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of users">
-                    <td>
-                        {{user.username}}
-                    </td>
-                    <td>
-                        <button (click)="selectedUser(user)" class="btn btn-primary">Edit</button>
-                        <button (click)="openModalDeleteUser(template, user.id)" class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 
     <!-- modal delete user -->
     <ng-template #template>
-        <div class="modal-body text-center">
-            <p>Do you want to confirm?</p>
-            <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-            <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+        <div class="modal-body text-center p-5">
+            <p class="text-muted"> ¿Esta Seguro de eliminar el usuario?</p>
+            <button type="button" class="btn btn-danger btn-lg m-1" (click)="confirm()">Si</button>
+            <button type="button" class="btn btn-primary btn-lg m-1" (click)="decline()">No</button>
         </div>
     </ng-template>
-     
-</section>
 
+</section>

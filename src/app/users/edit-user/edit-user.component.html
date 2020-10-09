@@ -1,3 +1,4 @@
+<!-- 
 <div class="modal-body">
         <h1>Editar Usuario</h1>
         <form [formGroup]="userForm">
@@ -19,4 +20,119 @@
                 </button>
             </div>
         </form>
+</div>
+ -->
+
+ <div class="modal-body">
+    <h5>Editar Usuario</h5>
+    <div class="p-4">
+        <form [formGroup]="userForm">
+            <div class="row mb-2">
+                <div class="col">
+                    <label class="text-muted">
+                        Nombres
+                    </label>
+                    <input type="text" class="form-control" formControlName="nombres">  
+                    <small 
+                     *ngIf="(nombres.dirty || nombres.touched) && nombres.invalid && nombres.errors.required"
+                     class="text-danger">
+                        Nombre es obligatorio
+                    </small>  
+                </div>
+                <div class="col">
+                    <label class="text-muted">
+                        Apellidos
+                    </label>
+                    <input type="text" class="form-control" formControlName="apellidos">   
+                    <small 
+                     *ngIf="(apellidos.dirty || apellidos.touched) && apellidos.invalid && apellidos.errors.required"
+                     class="text-danger">
+                        Apellido es obligatorio
+                    </small>                       
+                </div>
+            </div>
+            
+            <div class="row mb-2">
+                <div class="col">
+                    <label class="text-muted">
+                        Identificación (C.C)
+                    </label>
+                    <input type="number" class="form-control" placeholder="Identificacion" formControlName="identificacion">    
+                    <small 
+                     *ngIf="(identificacion.dirty || identificacion.touched) && identificacion.invalid && identificacion.errors.required"
+                     class="text-danger">
+                        La identificación es obligatorio
+                    </small> 
+                </div>
+                <div class="col">
+                    <label class="text-muted">
+                        Rol
+                    </label>
+                    <select name="" id="" class="form-control" formControlName="rol">
+                        <option value="administrador">Administrador</option>
+                        <option value="conductor">Conductor</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col">
+                    <label for="" class="text-muted">
+                        Estado
+                    </label>
+                    <select name="" id="" class="form-control" formControlName="estado">
+                        <option value="activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>  
+                </div>
+                <div class="col">
+                    <label class="text-muted">
+                        Contraseña
+                    </label>
+                    <input type="text" formControlName="password" class="form-control">
+                    <small 
+                    *ngIf="(password.dirty || password.touched) && password.invalid && password.errors.required"
+                    class="text-danger">
+                       La contraseña obligatorio
+                   </small>                     
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col">
+                    <label for="" class="text-muted">
+                        Teléfono
+                    </label>
+                    <input type="number" class="form-control" formControlName="telefono">
+                    <small 
+                    *ngIf="(telefono.dirty || telefono.touched) && telefono.invalid && telefono.errors.required"
+                    class="text-danger">
+                       El telefono es obligatorio
+                   </small>                     
+                </div>
+                <div class="col">
+                    <label for="" class="text-muted">
+                        Correo Electrónico
+                    </label>
+                    <input type="mail" class="form-control" formControlName="correo">
+                    <small 
+                    *ngIf="(correo.dirty || correo.touched) && correo.invalid && correo.errors.required"
+                    class="text-danger">
+                       El correo es obligatorio
+                   </small>                     
+
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col text-right">
+                    <button type="button" class="btn btn-success" (click)="update()"
+                    [disabled]="!userForm.valid">Guardar</button>
+                </div>
+                <div class="col text-left">
+                    <button type="button" class="btn btn-outline-success" (click)="cancel()">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

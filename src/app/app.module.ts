@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemAddComponent } from './item-add/item-add.component';
 
+import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { ItemAddComponent } from './item-add/item-add.component';
     BrowserAnimationsModule,
     AlertModule.forRoot(),
     ButtonsModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgxBootstrapIconsModule.pick(allIcons)
   ],
   providers: [],
   entryComponents:[

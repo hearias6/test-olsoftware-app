@@ -26,9 +26,46 @@ export class AddUserComponent implements OnInit {
 
   createFormUser(){
     this.userForm = this.formBuilder.group({
-      username : ['', Validators.required],
+      nombres : ['', Validators.required],
+      apellidos : ['', Validators.required],
+      identificacion : ['', Validators.required],
+      rol : ['administrador', Validators.required],
+      estado : ['activo', Validators.required],
+      telefono : ['', Validators.required],
+      correo : ['', Validators.required],
       password : ['', Validators.required]
     })
+  }
+
+  get nombres(){
+    return this.userForm.get('nombres');
+  }
+
+  get apellidos(){
+    return this.userForm.get('apellidos');
+  }
+  get identificacion(){
+    return this.userForm.get('identificacion');
+  }
+  get rol(){
+    return this.userForm.get('rol');
+  }
+  get estado(){
+    return this.userForm.get('estado');
+  }
+  get telefono(){
+    return this.userForm.get('telefono');
+  }
+  get correo(){
+    return this.userForm.get('correo');
+  }
+
+  get password(){
+    return this.userForm.get('password');
+  }
+
+  get id(){
+    return this.userForm.get('id');
   }
 
   save(){
