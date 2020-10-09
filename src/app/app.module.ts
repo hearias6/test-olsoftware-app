@@ -12,8 +12,6 @@ import { UsersComponent } from './users/users.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ItemListComponent } from './item-list/item-list.component';
-import { ItemAddComponent } from './item-add/item-add.component';
 
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { LoginComponent } from './login/login.component';
@@ -26,8 +24,6 @@ import { MenuComponent } from './shared/menu/menu.component';
     UsersComponent,
     AddUserComponent,
     EditUserComponent,
-    ItemListComponent,
-    ItemAddComponent,
     LoginComponent,
     HomeComponent,
     MenuComponent
@@ -44,7 +40,6 @@ import { MenuComponent } from './shared/menu/menu.component';
   ],
   providers: [],
   entryComponents:[
-    ItemAddComponent
   ],
   bootstrap: [AppComponent]
 })
