@@ -1,24 +1,24 @@
 [
     {
         "id":1,
-        "nombres":"hans",
-        "apellidos":"arias",
-        "identificacion":"11",
+        "nombres":"Elizabeth",
+        "apellidos":"Arbolea",
+        "identificacion":"665780080",
         "rol":"administrador",
         "estado":"activo",
         "telefono":"882",
-        "correo":"hans.arias@empresa.com",
-        "password":"hans123"
+        "correo":"elizabeth@empresa.com",
+        "password":"admin123"
     },
     {
         "id":2,
         "nombres":"Andres Felipe",
         "apellidos":"Garzia",
-        "identificacion":"1111",
+        "identificacion":"114485404",
         "rol":"administrador",
         "estado":"activo",
         "telefono":"333",
-        "correo":"andres.garzia@empresa.com",
-        "password":"andres123"
+        "correo":"andres@empresa.com",
+        "password":"admin123"
     }
 ]

@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white p-3">
+    <a routerLink="home" class="navbar-brand text-primary">
+        Olsoftware, Prueba Frontend
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a routerLink="/home" class="nav-link text-primary" >Inicio<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/users" class="nav-link text-primary" >Usuarios</a>
+        </li>
+      </ul>
+      <span class="navbar-text text-primary">
+          <strong>
+            {{userLogin.correo}}
+          </strong>
+        
+        <button class="btn btn-sm btn-primary" (click)="cerrarSesion()">
+            Salir
+        </button>
+      </span>
+    </div>
+  </nav>

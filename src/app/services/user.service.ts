@@ -13,6 +13,13 @@ export class UserService {
     return listUsers;
   }
 
+  getUserByUsername(username){
+    console.log('getUserByUsename ', username);
+    let data = listUsers.find(user=>user.identificacion==username);
+    console.log('data : ', data);
+    return data;
+  }
+
   addUser(user){
     user.id = listUsers.length + 1;
     this.insertFirtsList(0, user);

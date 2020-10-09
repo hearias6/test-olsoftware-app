@@ -1,0 +1,44 @@
+<section class="">
+
+    <div class="row">
+
+        <div class="col col-sm-12 col-md-6">
+            <figure>
+                <img src="../../assets/imagenes/sanantonio2.jpg" 
+                style="border-radius: 10px 10px 80% 60%; width: 900px; height: 600PX; opacity: 0.8;"
+                    alt="" srcset="">
+            </figure>    
+        </div>
+
+        <div class="col col-sm-12 col-md-4" style="margin-top:50px">
+            <div class="card p-3" style="border-radius: 50px;">
+                <div class="card-body">
+                    <h1 class="text-muted" style="margin-bottom:40px">
+                        Iniciar Sesión
+                    </h1>
+                    <form [formGroup]="loginForm">
+                        <div class="">
+                            <input type="text" class="form-control form-control-lg " placeholder="usuario"
+                                formControlName="username">
+                        </div>
+                        <div class="">
+                            <input type="text" class="form-control form-control-lg" placeholder="contraseña"
+                                formControlName="password">
+                        </div>
+                        <div class="form-group mt-3 ">
+                            <button class="btn btn-lg btn-primary w-100"
+                            (click)="logout()">
+                                Iniciar Sesión
+                            </button>
+                        </div>
+                        <alert type="danger" *ngIf="error">
+                            <strong>Error!</strong> {{message}}
+                          </alert>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

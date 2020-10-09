@@ -16,6 +16,9 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { ItemAddComponent } from './item-add/item-add.component';
 
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './shared/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
     AddUserComponent,
     EditUserComponent,
     ItemListComponent,
-    ItemAddComponent
+    ItemAddComponent,
+    LoginComponent,
+    HomeComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
