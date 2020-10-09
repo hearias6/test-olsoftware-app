@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-add-user',
@@ -13,7 +14,8 @@ export class AddUserComponent implements OnInit {
 
   constructor(
     private formBuilder : FormBuilder,
-    private userService : UserService
+    private userService : UserService,
+    public bsModalRef: BsModalRef
   ) { 
 
   }
@@ -32,6 +34,11 @@ export class AddUserComponent implements OnInit {
   save(){
     this.userService.addUser(this.userForm.value);
     this.userForm.reset();
+    this.bsModalRef.hide();
+  }
+
+  cancel(){
+    this.bsModalRef.hide();
   }
 
 }

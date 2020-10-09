@@ -15,7 +15,6 @@ export class UserService {
 
   addUser(user){
     user.id = listUsers.length + 1;
-    console.group('user.id ', user.id);
     this.insertFirtsList(0, user);
   }
 

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { emit } from 'process';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,23 +11,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class EditUserComponent implements OnInit {
 
+  user : any = {};
   userForm : FormGroup;
-  @Input() userData : any;
-  @Output() clearUserEdit = new EventEmitter<any>(); 
 
   constructor(
     private formBuilder : FormBuilder,
-    private userService : UserService
+    private userService : UserService,
+    public bsModalRef: BsModalRef
   ) { 
-    this.createFormUser();
   }
 
   ngOnInit(): void {
-    
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('change ..');
+    this.createFormUser();
     this.setUserForm();
   }
 
@@ -51,21 +47,15 @@ export class EditUserComponent implements OnInit {
     return this.userForm.get('id');
   }
 
-  // set user to form
-  setUserForm(){
-    this.username.setValue(this.userData.username);
-    this.password.setValue(this.userData.password);
-    this.id.setValue(this.userData.id);
-  }
-
   update(){
-    this.userService.editUser(this.userData.id, this.userForm.value);
-    this.onClearUserEdit();
+    this.userService.editUser(this.userForm.get('id').value, this.userForm.value);
+    this.bsModalRef.hide();
   }
 
-  onClearUserEdit(){
-    console.log('onClearUserEdit ');
-    this.clearUserEdit.emit({});
+  setUserForm(){
+    this.id.setValue(this.user.id);
+    this.username.setValue(this.user.username);
+    this.password.setValue(this.user.password);
   }
 
 }

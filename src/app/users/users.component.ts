@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { UserService } from '../services/user.service';
+import { AddUserComponent } from './add-user/add-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @Component({
   selector: 'app-users',
@@ -10,10 +13,13 @@ export class UsersComponent implements OnInit {
 
   users : [] = [];
   user : any  = {}
-  showEdit : boolean = false;
+  userId : number = -1;
+  message: string;
 
+  bsModalRef: BsModalRef;
   constructor(
-    private userService : UserService
+    private userService : UserService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit(): void {
@@ -24,25 +30,43 @@ export class UsersComponent implements OnInit {
     this.users = this.userService.getUsers();
   }
   
+  openModalAddUser() {
+    this.bsModalRef = this.modalService.show(AddUserComponent);
+    this.bsModalRef.content.closeBtnName = 'Close';  
+  }
+
   selectedUser(data){
-    console.log('selected user ', data);
     this.user = data;
-    console.log('user: ', this.user);
-    this.showEdit = true;
+    this.openModalEditUser();
   }
 
-  clearUserEditEvent($event){
-    console.log('clearUserEditEvent ', $event);
-    this.user = $event;
-    this.showEdit = false;
+  openModalEditUser(){
+    console.log('openModelEditUser');
+    const initialState = {
+      user : this.user
+    };
+    this.bsModalRef = this.modalService.show(EditUserComponent, {initialState});
+    this.bsModalRef.content.closeBtnName = 'Close';  
   }
 
-  deleteUser(id){
-    console.log('delete user : ', id);
-    if (id != undefined){
-      this.userService.deleteUser(id);
-    }
-    
+  openModalDeleteUser(template: TemplateRef<any>, id) {
+    this.userId = id;
+    this.bsModalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+ 
+  confirm(): void {
+    this.message = 'Confirmed!';
+    this.deleteUser();
+    this.bsModalRef.hide();
+  }
+ 
+  decline(): void {
+    this.message = 'Declined!';
+    this.bsModalRef.hide();
+  } 
+
+  deleteUser(){
+    this.userService.deleteUser(this.userId);
   }
 
 }

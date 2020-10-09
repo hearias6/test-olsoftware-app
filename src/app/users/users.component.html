@@ -1,10 +1,17 @@
-<section>
+<section class="" style="padding:2%">
 
-    <div>
-        <table>
+    <div class="row">
+        <div class="col col-md-10">
+            <h1>Usuarios</h1>
+        </div>
+        <div class="col col-md-2 text-right">
+            <button class="btn btn-success" (click)="openModalAddUser()">
+                Crear
+            </button>
+        </div>
+        <table class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Username</th>
                     <th>actions</th>
                 </tr>
@@ -12,25 +19,25 @@
             <tbody>
                 <tr *ngFor="let user of users">
                     <td>
-                        {{user.id}}
-                    </td>
-                    <td>
                         {{user.username}}
                     </td>
                     <td>
-                        <button (click)="selectedUser(user)">Edit</button>
-                        <button (click)="deleteUser(user.id)">Delete</button>
+                        <button (click)="selectedUser(user)" class="btn btn-primary">Edit</button>
+                        <button (click)="openModalDeleteUser(template, user.id)" class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <app-add-user></app-add-user>
-    <div *ngIf="showEdit">
-        <app-edit-user [userData]="user" (clearUserEdit)="clearUserEditEvent($event)"></app-edit-user>
-    </div>
-    
-
+    <!-- modal delete user -->
+    <ng-template #template>
+        <div class="modal-body text-center">
+            <p>Do you want to confirm?</p>
+            <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+            <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+        </div>
+    </ng-template>
+     
 </section>
 
