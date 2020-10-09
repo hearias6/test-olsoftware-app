@@ -1,0 +1,36 @@
+<section>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Username</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>
+                        {{user.id}}
+                    </td>
+                    <td>
+                        {{user.username}}
+                    </td>
+                    <td>
+                        <button (click)="selectedUser(user)">Edit</button>
+                        <button (click)="deleteUser(user.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <app-add-user></app-add-user>
+    <div *ngIf="showEdit">
+        <app-edit-user [userData]="user" (clearUserEdit)="clearUserEditEvent($event)"></app-edit-user>
+    </div>
+    
+
+</section>
+

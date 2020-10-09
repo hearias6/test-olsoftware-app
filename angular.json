@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "test-olsoftware-app"
+    }
+  },
+  "defaultProject": "test-olsoftware-app",
+  "cli": {
+    "analytics": "46009da8-e4f9-4cd5-82ca-c25f1cb29f8f"
+  }
 }

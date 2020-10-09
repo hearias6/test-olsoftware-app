@@ -1,0 +1,24 @@
+<section>
+    <div>
+        <h1>Agregar Usuario</h1>
+        <form [formGroup]="userForm">
+            <div>
+                <label for="">
+                    Usuario
+                </label>
+                <input type="text" placeholder="Usuario" formControlName="username">
+            </div>
+            <div>
+                <label for="">
+                    Contraseña
+                </label>
+                <input type="text" placeholder="Contraseña" formControlName="password">
+            </div>
+            <div>
+                <button (click)="save()" [disabled]="!userForm.valid">
+                    Add
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
